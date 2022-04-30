@@ -21,11 +21,12 @@
     <script src="js/leaflet-sidebar.min.js"></script>
     <script src="js/leaflet.awesome-markers.min.js"></script>
     <script src="js/Leaflet.Control.Custom.min.js"></script>
+    <script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script>
 </head>
     <body>
         <div id="map" class="map-container">
             <!-- Sidebar -->
-            <div id="sidebar" class="leaflet-sidebar collapsed">
+            <div id="sidebar" class="leaflet-sidebar collapsed sidebar-background">
                 <!-- Sidebar Tabs -->
                 <div class="leaflet-sidebar-tabs">
                     <ul role="tablist" >
@@ -43,19 +44,19 @@
                 </div>
 
                 <!-- Sidebar Contents -->
-                <div class="leaflet-sidebar-content">
+                <div class="leaflet-sidebar-content sidebar-content">
                     <div class="leaflet-sidebar-pane" id="home">
                         <h1 class="leaflet-sidebar-header">
                             家用快篩庫存地圖
                             <div class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></div>
                         </h1>
-                        <div>
+                        <div class="card" style="width: 420px;">
+                            <img src="images/rules.jpg" class="card-img-top" alt="圖片讀取失敗">
                             注意事項：
                             <ul>
                                 <li>部分藥局因採發放號碼牌方式，因目前無法顯示顯示已發送號碼牌數量。若看到剩餘數量，請先電洽藥局</li>
-                                <li>庫存數量僅供參考，實際庫存仍以個別單位現場為準</li>
+                                <li>庫存數量僅供參考，實際庫存仍以現場為準</li>
                             </ul>
-                            <img src="images/rule.jpg" style="width: 400px;" />
                         </div>
                     </div>
                 </div>
@@ -65,8 +66,6 @@
         <script src="js/main.min.js" type="text/javascript"></script>
         <script>
             initMaps( 'map' );
-            initGeoJsonPointLayer();
-            loadBackend();
 
             const intro = introJs();
             intro.setOptions({

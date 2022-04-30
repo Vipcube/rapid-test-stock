@@ -11,7 +11,7 @@ const colors = {
 const state = {
     overLayers: {},
     baseLayers: {},
-    center: [23.7035, 120.8255]
+    center: [25.0850681831, 121.564750671]
 }
 
 /**
@@ -21,7 +21,7 @@ const state = {
  */
 const initMaps = (mapId) => {
     state.map = L.map( mapId , {
-        zoom: 8,
+        zoom: 12,
         center: state.center,
         zoomControl: true,
         attributionControl: false
@@ -42,7 +42,7 @@ const initMaps = (mapId) => {
 
     L.control.custom({
         position: 'bottomright',
-        content: `<div class="card shadow rounded" style="padding: 5px"><dl>
+        content: `<div class="card shadow rounded map-legend-panel" style="padding: 5px"><dl>
                     <dt style="font-size: 1.25rem"><span style="color:#6FAB25">●</span>：100個以上</dt>
                     <dt style="font-size: 1.25rem"><span style="color:#36A5D6">●</span>：40個以上、低於100個</dt>
                     <dt style="font-size: 1.25rem"><span style="color:#F1942F">●</span>：20個以上、低於40個</dt>
@@ -50,6 +50,17 @@ const initMaps = (mapId) => {
                     <dt style="font-size: 1.25rem"><span style="color:#446677">●</span>：目前沒有資料</dt>
                  </dl></div>`
     }).addTo( state.map );
+
+    initGeoJsonPointLayer();
+    loadBackend();
+
+    state.map.on('move', () => {
+        state.overLayers['健保藥局庫存'].clearLayers();
+    });
+
+    state.map.on('moveend', () => {
+        loadBackend();
+    });
 }
 
 const initGeoJsonPointLayer = () => {
@@ -100,13 +111,16 @@ const initGeoJsonPointLayer = () => {
 }
 
 const loadBackend = () => {
+    const bbox = state.map.getBounds();
+    const bboxPolygon = turf.bboxPolygon( [bbox._southWest.lng, bbox._northEast.lat, bbox._northEast.lng, bbox._southWest.lat] );
     fetch('https://vipcube.github.io/opendata.gov.tw/rapidTestStock.json')
-        .then(response => response.json())
-        .then(json => {
-            if (state.overLayers['健保藥局庫存']) {
+        .then( response => response.json() )
+        .then( features => turf.pointsWithinPolygon( features, bboxPolygon ) )
+        .then( features => {
+            if ( state.overLayers['健保藥局庫存'] ) {
                 const layer = state.overLayers['健保藥局庫存'];
                 layer.clearLayers();
-                layer.addData(json);
+                layer.addData(features);
             }
         });
 }
