@@ -1,31 +1,11 @@
 'use strict';
 
-const styles = {
-    greater100: {
-        iconShape: "doughnut",
-        borderWidth: 5,
-        borderColor: "#009a4b"
-    },
-    range40To100: {
-        iconShape: "doughnut",
-        borderWidth: 5,
-        borderColor: "#FFEA00"
-    },
-    range20To40: {
-        iconShape: "doughnut",
-        borderWidth: 5,
-        borderColor: "#F08000"
-    },
-    lower20: {
-        iconShape: "doughnut",
-        borderWidth: 5,
-        borderColor: "#FF0000"
-    },
-    noData: {
-        iconShape: "doughnut",
-        borderWidth: 5,
-        borderColor: "#8A90B4"
-    }
+const colors = {
+    greater100: "green",
+    range40To100: "blue",
+    range20To40: "orange",
+    lower20: "red",
+    noData: "darkgreen"
 }
 
 const state = {
@@ -57,6 +37,8 @@ const initMaps = (mapId) => {
         container: 'sidebar',
         position: 'left',
     }).addTo( state.map ).open('home');
+
+    L.control.locate().addTo( state.map );
 }
 
 const initGeoJsonPointLayer = () => {
@@ -84,19 +66,23 @@ const initGeoJsonPointLayer = () => {
             const stock = feature.properties.stock;
             let stockStyle;
             if ( stock > 100  ){
-                stockStyle = styles.greater100;
+                stockStyle = colors.greater100;
             } else if ( stock >= 40 && stock <= 100 ){
-                stockStyle = styles.range40To100;
+                stockStyle = colors.range40To100;
             } else if ( stock >= 20 && stock < 40 ){
-                stockStyle = styles.range20To40;
+                stockStyle = colors.range20To40;
             } else if ( stock < 20 && stock >= 0 ){
-                stockStyle = styles.lower20;
+                stockStyle = colors.lower20;
             } else {
-                stockStyle = styles.noData;
+                stockStyle = colors.noData;
             }
 
             return L.marker( latlng, {
-                icon: L.BeautifyIcon.icon( stockStyle )
+                icon: L.AwesomeMarkers.icon({
+                    prefix: 'fa',
+                    icon: 'hospital-o',
+                    markerColor:  stockStyle
+                })
             } );
         }
     }).addTo( state.map );
@@ -104,13 +90,12 @@ const initGeoJsonPointLayer = () => {
 
 const loadBackend = () => {
     fetch('https://vipcube.github.io/opendata.gov.tw/rapidTestStock.json')
-        .then( response => response.json() )
-        .then( json => {
-            console.log( json );
-            if ( state.overLayers['健保藥局庫存'] ){
+        .then(response => response.json())
+        .then(json => {
+            if (state.overLayers['健保藥局庫存']) {
                 const layer = state.overLayers['健保藥局庫存'];
                 layer.clearLayers();
-                layer.addData( json );
+                layer.addData(json);
             }
         });
 }
