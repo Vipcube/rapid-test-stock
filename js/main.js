@@ -21,7 +21,7 @@ const state = {
  */
 const initMaps = (mapId) => {
     state.map = L.map( mapId , {
-        zoom: 12,
+        zoom: 13,
         center: state.center,
         zoomControl: true,
         attributionControl: false

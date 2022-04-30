@@ -7,6 +7,10 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
 }
+.introjs-tooltip {
+  background: rgba(10, 26, 39, 0.8);
+  color: #FFFFFF;
+}
 /** Global Variables */
 /** Functional  */
 .map-container {
@@ -23,6 +27,21 @@ body {
 .map-legend-panel {
   background: rgba(10, 26, 39, 0.8);
   color: #FFFFFF;
+}
+.leaflet-control-layers {
+  background: rgba(69, 103, 119, 0.8) !important;
+  color: #FFFFFF !important;
+}
+.leaflet-bar a {
+  background: rgba(69, 103, 119, 0.8) !important;
+  color: #FFFFFF !important;
+}
+.leaflet-bar a:hover {
+  background: rgba(69, 103, 119, 0.8) !important;
+  color: #FFFFFF !important;
+}
+.leaflet-control-locate a .leaflet-control-locate-location-arrow {
+  background-color: white;
 }
 .sidebar-background {
   background: rgba(69, 103, 119, 0.8) !important;
