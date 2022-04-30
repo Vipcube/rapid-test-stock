@@ -24,7 +24,7 @@ const initMaps = (mapId) => {
         zoom: 13,
         center: state.center,
         zoomControl: true,
-        attributionControl: false
+        attributionControl: true
     });
 
     state.baseLayers["國土測繪通用版電子地圖"] = L.tileLayer('http://wmts.nlsc.gov.tw/wmts/EMAP/default/EPSG:3857/{z}/{y}/{x}', {

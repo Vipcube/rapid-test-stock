@@ -11,8 +11,14 @@ body {
   background: rgba(10, 26, 39, 0.8);
   color: #FFFFFF;
 }
+.card {
+  background: rgba(10, 26, 39, 0);
+}
 /** Global Variables */
 /** Functional  */
+.padding-10 {
+  padding: 10px;
+}
 .map-container {
   position: relative;
   top: 0;
@@ -56,5 +62,8 @@ body {
 .sidebar-content {
   background: rgba(10, 26, 39, 0.8);
   color: #FFFFFF;
+}
+.leaflet-sidebar-pane {
+  padding-left: 0;
 }
 /*# sourceMappingURL=index.css.map */
