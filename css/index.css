@@ -20,4 +20,22 @@ body {
   overflow-x: hidden !important;
   overflow-y: hidden !important;
 }
+.map-legend-panel {
+  background: rgba(10, 26, 39, 0.8);
+  color: #FFFFFF;
+}
+.sidebar-background {
+  background: rgba(69, 103, 119, 0.8) !important;
+  color: #FFFFFF !important;
+}
+.sidebar-background ul li a {
+  color: #FFFFFF !important;
+}
+.sidebar-background ul li a:hover {
+  background-color: #FDBE3F;
+}
+.sidebar-content {
+  background: rgba(10, 26, 39, 0.8);
+  color: #FFFFFF;
+}
 /*# sourceMappingURL=index.css.map */
