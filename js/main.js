@@ -39,6 +39,17 @@ const initMaps = (mapId) => {
     }).addTo( state.map ).open('home');
 
     L.control.locate().addTo( state.map );
+
+    L.control.custom({
+        position: 'bottomright',
+        content: `<div class="card shadow rounded" style="padding: 5px"><dl>
+                    <dt style="font-size: 1.25rem"><span style="color:#6FAB25">●</span>：100個以上</dt>
+                    <dt style="font-size: 1.25rem"><span style="color:#36A5D6">●</span>：40個以上、低於100個</dt>
+                    <dt style="font-size: 1.25rem"><span style="color:#F1942F">●</span>：20個以上、低於40個</dt>
+                    <dt style="font-size: 1.25rem"><span style="color:#CD3B28">●</span>：低於20個</dt>
+                    <dt style="font-size: 1.25rem"><span style="color:#446677">●</span>：目前沒有資料</dt>
+                 </dl></div>`
+    }).addTo( state.map );
 }
 
 const initGeoJsonPointLayer = () => {
