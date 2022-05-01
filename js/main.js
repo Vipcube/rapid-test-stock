@@ -124,3 +124,8 @@ const loadBackend = () => {
             }
         });
 }
+
+const selectCountry = ( option ) => {
+    const array = option.value.split(",").map(Number);
+    state.map.flyTo( [array[0], array[1]], array[2] );
+}
