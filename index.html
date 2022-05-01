@@ -107,12 +107,13 @@
                     </div>
                     <div class="leaflet-sidebar-pane" id="detail">
                         <h1 class="leaflet-sidebar-header">
-                            藥局資料
+                            藥局詳細資料
                             <div class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></div>
                         </h1>
                         <div class="card padding-10" style="width: 420px;">
-                            <div class="card-body">
-                                test
+                            <h5 id="detailTitle" class="card-title">請點選地圖中的點</h5>
+                            <div id="detailContent" class="card-body">
+
                             </div>
                         </div>
                     </div>
@@ -139,17 +140,17 @@
                     },
                     {
                         title: '地圖說明',
-                        intro: "標誌顏色代表快篩剩餘數量"
+                        intro: "地圖點顏色對應快篩剩餘數量"
                     },
                     {
                         title: '頁面說明',
                         element: ".fa-info-circle",
-                        intro: "點擊標誌會於此頁顯示詳細資訊"
+                        intro: "點擊地圖點會於此頁顯示詳細資訊"
                     },
                     {
                         title: '圖例說明',
                         element: ".map-legend-panel",
-                        intro: "顏色對應快篩剩餘數量"
+                        intro: "地圖點顏色對應快篩剩餘數量"
                     }
                 ]
             });
