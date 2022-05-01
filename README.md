@@ -21,7 +21,7 @@
 - 透過 `Github Actions` 模擬 `CI` 方式，定時建構 `Maven` 產出後端資料
 - 此前端專案則直連後端資料進行視覺化展示
 
-前端 UI 方面就八成參考了
+前端 UI 方面就八成參考 [口罩地圖](https://kiang.github.io/pharmacies) 了，以示我對原作者的尊敬(X)。
 
 ## 後端資料
 
