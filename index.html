@@ -34,7 +34,12 @@
                     <ul role="tablist" >
                         <li>
                             <a href="#home" role="tab">
-                                <i class="fa fa fa-bars"></i>
+                                <i class="fa fa-bars"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#detail" role="tab">
+                                <i class="fa fa-info-circle"></i>
                             </a>
                         </li>
                     </ul>
@@ -100,6 +105,17 @@
                             </div>
                         </div>
                     </div>
+                    <div class="leaflet-sidebar-pane" id="detail">
+                        <h1 class="leaflet-sidebar-header">
+                            藥局資料
+                            <div class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></div>
+                        </h1>
+                        <div class="card padding-10" style="width: 420px;">
+                            <div class="card-body">
+                                test
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -117,8 +133,18 @@
             intro.setOptions({
                 steps: [
                     {
+                        title: '按鈕說明',
                         element: ".leaflet-control-locate",
                         intro: "快速導航到 GPS 的位置"
+                    },
+                    {
+                        title: '地圖說明',
+                        intro: "標誌顏色代表快篩剩餘數量"
+                    },
+                    {
+                        title: '圖例說明',
+                        element: ".map-legend-panel",
+                        intro: "顏色對應快篩剩餘數量"
                     }
                 ]
             });
