@@ -29,7 +29,7 @@ const initMaps = (mapId) => {
         attributionControl: true
     });
 
-    state.baseLayers["國土測繪通用版電子地圖"] = L.tileLayer('http://wmts.nlsc.gov.tw/wmts/EMAP/default/EPSG:3857/{z}/{y}/{x}', {
+    state.baseLayers["國土測繪通用版電子地圖"] = L.tileLayer('https://wmts.nlsc.gov.tw/wmts/EMAP/default/EPSG:3857/{z}/{y}/{x}', {
         attribution: '<a href="https://maps.nlsc.gov.tw/">國土測繪圖資服務雲</a>',
     }).addTo(state.map);
 
